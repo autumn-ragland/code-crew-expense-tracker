@@ -1,14 +1,212 @@
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>CodeCrew Expense Tracker</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <title>CodeCrew Expense Tracker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Code Crew Expense Tracker</h1>
-    <img src="https://static.wixstatic.com/media/0b0467_35de4013954645dd9e34afcc64538afc~mv2.png/v1/fill/w_480,h_80,al_c,q_85,usm_0.66_1.00_0.01/0b0467_35de4013954645dd9e34afcc64538afc~mv2.webp" alt="logo">
-  <script src="scripts.js"></script>
+    <header>
+        <h1>Code Crew Expense Tracker</h1>
+
+        <img src="https://static.wixstatic.com/media/0b0467_35de4013954645dd9e34afcc64538afc~mv2.png/v1/fill/w_480,h_80,al_c,q_85,usm_0.66_1.00_0.01/0b0467_35de4013954645dd9e34afcc64538afc~mv2.webp"
+            alt="logo">
+
+        <ul class="nav justify-content-center ">
+            <li class="nav-item">
+                <a class="nav-link" href="#dashboard-container">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#student-container">Student</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#parent-container">Parent</a>
+            </li>
+        </ul>
+    </header>
+
+    <div id="dashboard-container jumbotron">
+        <h2>Dashboard</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                    <h5>Week</h5>
+                </div>
+                <div class="col-md">
+                    <h5>1</h5>
+                </div>
+                <div class="col-md">
+                    <h5>2</h5>
+                </div>
+                <div class="col-md">
+                    <h5>3</h5>
+                </div>
+                <div class="col-md">
+                    <h5>4</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h5>Savings</h5>
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h5>Goals</h5>
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+                <div class="col-md">
+                    <input type="checkbox">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="statusBar">
+        <h4>Fill in the info below to determine the status of your budget!</h4>
+    </div>
+
+    <div id="student-container">
+        <h2>Student</h2>
+
+        <h4>How much money did your family spend in the following categories?</h4>
+
+        <div class="displaySpendingFormSubmission">
+            Display Response 
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="expenseCategory">Category</label>
+                <select class="form-control" id="expenseCategory">
+                    <option>Other</option>
+                    <option>Savings</option>
+                    <option>Housing</option>
+                    <option>Food</option>
+                    <option>Transportation</option>
+                    <option>Utilities</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expenseAmount">Amount</label>
+                <input type="number" class="form-control" id="expenseAmount" rows="1">
+            </div>
+            <button class="btn btn-primary mb-2" onclick="spendingFormSubmission()">Submit</button>
+        </form>
+
+        <h4>What progress did your family make toward your savings goal?</h4>
+
+        <div class="displayProgressFormSubmission">
+            Display Response 
+        </div>
+
+        <form>
+            <div class="form-group">
+                <textarea class="form-control" id="savingsProgress" rows="4"></textarea>
+            </div>
+        </form>
+
+        <h4>What are you saving for?</h4>
+
+        <div class="displayGoalFormSubmission">
+            Display Response 
+        </div>
+
+        <form>
+            <div class="form-group">
+                <textarea class="form-control" id="savingsGoal" rows="4"></textarea>
+            </div>
+            <button class="btn btn-primary mb-2" onclick="goalFormSubmission()">Submit</button>
+        </form>
+    </div>
+
+    <div id="parent-container">
+        <h2>Parent</h2>
+        
+        <h4>What is your monthly income?</h4>
+
+        <div class="displayIncomeFormSubmission">
+            Display "Income Submitted" 
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="monthlyIncome">Amount</label>
+                <input type="number" class="form-control" id="monthlyIncome" rows="4">
+            </div>
+            <button class="btn btn-primary mb-2" onclick="monthlyIncomeSubmission()">Submit</button>
+        </form>
+
+        <h4>How much money did your family spend in the following categories?</h4>
+        
+        <div class="displaySpendingFormSubmissionParent">
+            Display Response 
+        </div>
+
+        <form id="expenseCategoryParentForm">
+            <div class="form-group">
+                <label for="expenseCategoryParent">Category</label>
+                <select class="form-control" id="expenseCategoryParent">
+                    <option>Other</option>
+                    <option>Savings</option>
+                    <option>Housing</option>
+                    <option>Food</option>
+                    <option>Transportation</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="expenseAmountParent">Amount</label>
+                <input type="number" class="form-control" id="expenseAmountParent" rows="1">
+            </div>
+            <button class="btn btn-primary mb-2" onclick="expenseFormSubmissionParent()">Submit</button>
+        </form>
+
+        <h4>What are you saving for?</h4>
+        
+        <div class="displayGoalFormSubmissionParent">
+            Display Response 
+        </div>
+
+        <form>
+            <div class="form-group">
+                <textarea class="form-control" id="savingsGoalParent" rows="4"></textarea>
+            </div>
+            <button class="btn btn-primary mb-2" onclick="goalFormSubmissionParent()">Submit</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
